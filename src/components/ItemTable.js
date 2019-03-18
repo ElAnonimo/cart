@@ -7,7 +7,7 @@ import { getItems } from '../actions/itemsAction';
 import DiscountComponent from './DiscountComponent';
 
 type Props = {
-  getItems: () => {}
+  getItems: () => void
 };
 
 type State = {
