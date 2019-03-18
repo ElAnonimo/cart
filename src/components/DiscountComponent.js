@@ -2,13 +2,17 @@
 
 import React, { Component } from 'react';
 
-import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+
+type Props = {
+  handleDiscount: (discount: number) => void
+};
 
 type State = {
   discount: number
 };
 
-class DiscountComponent extends Component<null, State> {
+class DiscountComponent extends Component<Props, State> {
   constructor() {
     super();
 
@@ -33,21 +37,21 @@ class DiscountComponent extends Component<null, State> {
 
   render() {
     return (
-      <Form onSubmit={this.onSubmit}>
-        <FormGroup row>
-          <Label for='discount' md={3}>Применить скидку</Label>
-          <Col sm={2}>
-            <Input
-              type='text'
-              name='discount'
-              pattern='[0-9]*'
-              value={this.state.discount > 0 ? this.state.discount : ''}
-              onChange={this.onChange}
-            />
-          </Col>
-          <Label md={2}>рублей</Label>
-          <Button md={5}>Применить</Button>
+      <Form onSubmit={this.onSubmit} inline>
+        <FormGroup className='mb-3 mr-2'>
+          <Label for='discount' className='mr-2'>Применить скидку</Label>
+          <Input
+            type='text'
+            name='discount'
+            pattern='[0-9]*'
+            value={this.state.discount > 0 ? this.state.discount : ''}
+            onChange={this.onChange}
+          />
         </FormGroup>
+        <FormGroup className='mb-3 mr-2'>
+          <Label>рублей</Label>
+        </FormGroup>
+        <Button className='mb-3 form-control'>Применить</Button>
       </Form>
     );
   }
