@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import { addItem } from '../actions/itemsAction';
 
-class AddItem extends Component<Props, State> {
+class AddItem extends Component {
   constructor() {
     super();
 

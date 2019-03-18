@@ -39,7 +39,7 @@ class DiscountComponent extends Component {
             />
           </Col>
           <Label md={2}>рублей</Label>
-          <Button>Применить</Button>
+          <Button md={5}>Применить</Button>
         </FormGroup>
       </Form>
     );
