@@ -47,8 +47,6 @@ class DiscountComponent extends Component<Props, State> {
             value={this.state.discount > 0 ? this.state.discount : ''}
             onChange={this.onChange}
           />
-        </FormGroup>
-        <FormGroup className='mb-3 mr-2'>
           <Label>рублей</Label>
         </FormGroup>
         <Button className='mb-3 form-control'>Применить</Button>
