@@ -41,6 +41,7 @@ class DiscountComponent extends Component<Props, State> {
         <FormGroup className='mb-3 mr-2'>
           <Label for='discount' className='mr-2'>Применить скидку</Label>
           <Input
+            className='mr-2'
             type='text'
             name='discount'
             pattern='[0-9]*'
