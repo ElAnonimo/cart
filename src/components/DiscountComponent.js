@@ -1,8 +1,14 @@
+/* @flow */
+
 import React, { Component } from 'react';
 
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
-class DiscountComponent extends Component {
+type State = {
+  discount: number
+};
+
+class DiscountComponent extends Component<null, State> {
   constructor() {
     super();
 
@@ -10,8 +16,9 @@ class DiscountComponent extends Component {
       discount: 0
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    // @see https://github.com/facebook/flow/issues/1517#issuecomment-194538151
+    (this: any).onChange = this.onChange.bind(this);
+    (this: any).onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(evt) {

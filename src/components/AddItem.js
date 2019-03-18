@@ -1,10 +1,20 @@
+/* @flow */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import { addItem } from '../actions/itemsAction';
 
-class AddItem extends Component {
+type State = {
+  itemName: string,
+  itemPrice: number
+};
+
+type Props = {
+  addItem: ({ itemName: string, itemPrice: number }) => void
+};
+
+class AddItem extends Component<Props, State> {
   constructor() {
     super();
 
@@ -13,8 +23,9 @@ class AddItem extends Component {
       itemPrice: 0
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    // @see https://github.com/facebook/flow/issues/1517#issuecomment-194538151
+    (this: any).onChange = this.onChange.bind(this);
+    (this: any).onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(evt) {
@@ -77,9 +88,5 @@ class AddItem extends Component {
     );
   }
 }
-
-AddItem.propTypes = {
-  addItem: PropTypes.func.isRequired
-};
 
 export default connect(null, { addItem })(AddItem);

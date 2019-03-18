@@ -1,11 +1,20 @@
+/* @flow */
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import { getItems } from '../actions/itemsAction';
 import DiscountComponent from './DiscountComponent';
 
-class ItemTable extends Component {
+type Props = {
+  getItems: () => {}
+};
+
+type State = {
+  discount: number
+};
+
+class ItemTable extends Component<Props, State> {
   constructor() {
     super();
 
@@ -13,7 +22,8 @@ class ItemTable extends Component {
       discount: 0
     };
 
-    this.handleDiscount = this.handleDiscount.bind(this);
+    // @see https://github.com/facebook/flow/issues/1517#issuecomment-194538151
+    (this: any).handleDiscount = this.handleDiscount.bind(this);
   }
 
   componentDidMount() {
@@ -61,10 +71,5 @@ class ItemTable extends Component {
 const mapStateToProps = state => ({
   itemList: state.itemList
 });
-
-ItemTable.propTypes = {
-  itemList: PropTypes.objectOf(PropTypes.array).isRequired,
-  getItems: PropTypes.func.isRequired
-};
 
 export default connect(mapStateToProps, { getItems })(ItemTable);
