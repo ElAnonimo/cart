@@ -25,11 +25,11 @@ class DiscountComponent extends Component<Props, State> {
     (this: any).onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(evt) {
+  onChange(evt: SyntheticInputEvent<HTMLInputElement>): void {
     this.setState({ [evt.target.name]: evt.target.value });
   }
 
-  onSubmit(evt) {
+  onSubmit(evt: SyntheticInputEvent<HTMLFormElement>):void {
     evt.preventDefault();
 
     this.props.handleDiscount(this.state.discount);
